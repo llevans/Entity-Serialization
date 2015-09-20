@@ -85,7 +85,7 @@ public abstract class EafEntity {
         // If entity POJO not found, try POJO in core.entities package
         if (entity == null) {
             try {
-                entityNm = "main.java.mil.navy.cnmoc.eaf.core.entities." + module + "." + tmpNm;
+                entityNm = "eaf.core.entities." + module + "." + tmpNm;
                 entity = (PersistentEntity) Class.forName(entityNm).newInstance();
             } catch (final Exception e) {
                 EafCommon.debug("findPOJO: try " + entityNm);
@@ -95,7 +95,7 @@ public abstract class EafEntity {
         // Try POJO in core.entities package w/ all caps
         if (entity == null) {
             try {
-                entityNm = "main.java.mil.navy.cnmoc.eaf.core.entities." + module + "." + tmpNm.toUpperCase();
+                entityNm = "eaf.core.entities." + module + "." + tmpNm.toUpperCase();
                 entity = (PersistentEntity) Class.forName(entityNm).newInstance();
             } catch (final Exception e) {
                 EafCommon.debug("findPOJO: try " + entityNm);
@@ -105,7 +105,7 @@ public abstract class EafEntity {
         // Try POJO in core.entities package w/ capitalized
         if (entity == null) {
             try {
-                entityNm = "main.java.mil.navy.cnmoc.eaf.core.entities." + module + "."
+                entityNm = "eaf.core.entities." + module + "."
                         + tmpNm.substring(0, 1).toUpperCase() + tmpNm.substring(1).toLowerCase();
                 entity = (PersistentEntity) Class.forName(entityNm).newInstance();
             } catch (final Exception e) {
@@ -134,7 +134,7 @@ public abstract class EafEntity {
     public static Object getEntity(final String incEntityPath) {
 
         PersistentEntity entity = null;
-        final String entityPath = "main.java.mil.navy.cnmoc.eaf.core.entities." + incEntityPath;
+        final String entityPath = "eaf.core.entities." + incEntityPath;
         EafCommon.debug("Find POJO " + entityPath);
 
         try {
@@ -231,7 +231,7 @@ public abstract class EafEntity {
         this.datetime = new Date();
         this.archive = 0;
 
-        String whichModule = this.getClass().getName().split("main.java.mil.navy.cnmoc.eaf.core.entities")[1]
+        String whichModule = this.getClass().getName().split("eaf.core.entities")[1]
                 .split("\\.")[1];
 
         setApp(EafCommon.APPS.getApp(whichModule));
